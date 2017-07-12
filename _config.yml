@@ -31,6 +31,7 @@ collections:
   themes:
     output: true
   courses:
+  funders:
 
 defaults:
   -

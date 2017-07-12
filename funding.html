@@ -1,0 +1,40 @@
+---
+layout: base
+title: Our funding
+---
+<div class="funding-page">
+  <section class="hero">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <h1 class="title">Our funding</h1>
+          <p class="description">Our work relies heavily on the funding we receive from Voluptatibus maiores quaerat qui ad nostrum aut totam. Dolores quod explicabo soluta. You can find more information in our <a href="">2016 annual report</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+	<section class="funders container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="logo hidden-xs"></th>
+          <th>Funder</th>
+          <th>Year</th>
+          <th>Amount</th>
+          <th class="hidden-xs">Funded</th>
+        </tr>
+      </thead>
+      {% for funder in site.funders %}
+      <tr>
+        <td class="logo hidden-xs"><a href="{{ funder.website }}"><img src="/img/collaborators/{{ funder.logo }}"></a></td>
+        <td><a href="{{ funder.website }}">{{ funder.title }}</a></td>
+        <td>{{ funder.year }}</td>
+        <td>{{ funder.amount }}</td>
+        <td class="hidden-xs">{{ funder.details }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </section>
+
+</div>

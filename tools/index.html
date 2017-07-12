@@ -4,74 +4,74 @@ title: Tools
 featured-tool: wazimap
 ---
 <div class="tools-page">
-	<section class="hero">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8">
-					<h1 class="title">Tools</h1>
-					<p class="description">At OpenUp, we believe that 'open' is more than just making data available. Data is meaningless unless you can understand it, which is why we build online tools to help contextualise data for government, civil society and human beings. We believe open is easy to understand, simple to navigate and functional.</p>
-				</div>
-			</div>
-		</div>
-	</section>
+  <section class="hero">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <h1 class="title">Tools</h1>
+          <p class="description">At OpenUp, we believe that 'open' is more than just making data available. Data is meaningless unless you can understand it, which is why we build online tools to help contextualise data for government, civil society and human beings. We believe open is easy to understand, simple to navigate and functional.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-	<section class="featured-tool container">
-		<div class="row">
+  <section class="featured-tool container">
+    <div class="row">
 
-			<div class="col-md-6">
-				<div class="bubble">Featured</div>
-				{% for tool in site.tools %}
-					{% if tool.name == page.featured-tool %}
-						<a href="{{ site.baseurl }}{{ tool.url }}"><img alt="{{ tool.image }}" src="{{ site.baseurl }}/img/tools/{{ tool.image }}"></a>
-					{% endif %}
-				{% endfor %}
-			</div>
+      <div class="col-md-6">
+        <div class="bubble">Featured</div>
+        {% for tool in site.tools %}
+          {% if tool.name == page.featured-tool %}
+            <a href="{{ site.baseurl }}{{ tool.url }}"><img alt="{{ tool.image }}" src="{{ site.baseurl }}/img/tools/{{ tool.image }}"></a>
+          {% endif %}
+        {% endfor %}
+      </div>
 
-			<div class="col-md-6 featured-article article-list">
-				{% for article in site.articles reversed %}
-					{% for tool in article.tools %}
-						{% if tool.name == page.featured-tool %}
-							{% if article.featured == true %}
-								{% capture number %}{% increment number %}{% endcapture %}
-								{% if number < '3' %}
-									<ul class="list-unstyled">
-										<li class="tags">
-											{% for article-theme in site.themes %}
-											  {% for theme in article.themes %}
-											    {% if article-theme.name == theme.name %}
-											      <a class="badge theme {{ theme.name }}" href="{{ article-theme.url | prepend: site.baseurl }}">{{ article-theme.title }}</a>
-											    {% endif %}
-											  {% endfor %}
-											{% endfor %}
-										</li>
-										<li class="title"><a href="{{ article.url | prepend: site.baseurl }}" >{{ article.title }}</a></li>
-										{% for member in site.team %}
-										  {% if article.author == member.name %}
-										  	<li class="author"><a href="{{ member.url | prepend: site.baseurl }}">{{ member.full-name }}</a></li>
-										  {% endif %}
-										{% endfor %}
-										<li class="arrow"><a href="{{ article.url | prepend: site.baseurl }}">›</a></li>
-									</ul>
-								{% endif %}
-							{% endif %}
-						{% endif %}
-					{% endfor %}
-				{% endfor %}	
-			</div>
+      <div class="col-md-6 featured-article article-list">
+        {% for article in site.articles reversed %}
+          {% for tool in article.tools %}
+            {% if tool.name == page.featured-tool %}
+              {% if article.featured == true %}
+                {% capture number %}{% increment number %}{% endcapture %}
+                {% if number < '3' %}
+                  <ul class="list-unstyled">
+                    <li class="tags">
+                      {% for article-theme in site.themes %}
+                        {% for theme in article.themes %}
+                          {% if article-theme.name == theme.name %}
+                            <a class="badge theme {{ theme.name }}" href="{{ article-theme.url | prepend: site.baseurl }}">{{ article-theme.title }}</a>
+                          {% endif %}
+                        {% endfor %}
+                      {% endfor %}
+                    </li>
+                    <li class="title"><a href="{{ article.url | prepend: site.baseurl }}" >{{ article.title }}</a></li>
+                    {% for member in site.team %}
+                      {% if article.author == member.name %}
+                        <li class="author"><a href="{{ member.url | prepend: site.baseurl }}">{{ member.full-name }}</a></li>
+                      {% endif %}
+                    {% endfor %}
+                    <li class="arrow"><a href="{{ article.url | prepend: site.baseurl }}">›</a></li>
+                  </ul>
+                {% endif %}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        {% endfor %}  
+      </div>
 
-		</div>
-	</section>
+    </div>
+  </section>
 
-	<section class="all-tools container">
-		<div class="row">
-			{% for tool in site.tools %}
-			{% unless tool.name == page.featured-tool %}
-			<a href="{% if tool.skip-own-page %}{{ tool.external-url }}{% else %}{{ site.baseurl }}{{ tool.url }}{% endif %}" class="col-xs-12 col-sm-6 col-md-4 col-lg-3 toolbox">
-				<img alt="{{ tool.title }}" src="{{ site.baseurl }}/img/tools/{{ tool.image }}">
-			</a>
-			{% endunless %}
-			{% endfor %}
-		</div>
-	</section>
+  <section class="all-tools container">
+    <div class="row">
+      {% for tool in site.tools %}
+      {% unless tool.name == page.featured-tool %}
+      <a href="{% if tool.skip-own-page %}{{ tool.external-url }}{% else %}{{ site.baseurl }}{{ tool.url }}{% endif %}" class="col-xs-12 col-sm-6 col-md-4 col-lg-3 toolbox">
+        <img alt="{{ tool.title }}" src="{{ site.baseurl }}/img/tools/{{ tool.image }}">
+      </a>
+      {% endunless %}
+      {% endfor %}
+    </div>
+  </section>
 
 </div>
